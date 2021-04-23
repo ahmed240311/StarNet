@@ -595,7 +595,7 @@ class _BodyState extends State<Body> {
                               },
                             ),
                             Divider(
-                              height: 5.0,
+                              height: 5.1,
                               color: Colors.grey[900],
                             ),
                           ],
