@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "439546626262",
+    "firebase_url": "https://starnet-91681-default-rtdb.firebaseio.com",
+    "project_id": "starnet-91681",
+    "storage_bucket": "starnet-91681.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439546626262:android:4db48ad950a7e1a464c977",
+        "android_client_info": {
+          "package_name": "com.Star.Starnet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439546626262-qka12f6742euh5h0l5fbsedi0gbki4bm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYEq1pLr9KC2Io7wM9WSvaif7FLPekKoc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439546626262-qka12f6742euh5h0l5fbsedi0gbki4bm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
