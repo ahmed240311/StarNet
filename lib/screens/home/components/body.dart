@@ -50,7 +50,6 @@ class _BodyState extends State<Body> {
 
                     for (var doc in snapshot.data.docs) {
                       var data = doc.data();
-
                       products.add(Product(
                           color: data[KColor],
                           title: data[KTitle],
