@@ -64,7 +64,6 @@ class _BodyState extends State<Body> {
                     products.clear();
                     _tap1products = getProductCategory(KProduct);
                     // _tap3products = getProductCategory(KAllRemote);
-
                     return GridView.builder(
                         physics: ClampingScrollPhysics(),
                         itemCount: 2,
