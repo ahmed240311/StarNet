@@ -134,7 +134,6 @@ class _BodyState extends State<Body> {
                 },
               ),
             ),
-
             Positioned(
               top: size.height * .72,
               right: size.height * 0.03,
