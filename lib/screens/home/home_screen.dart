@@ -82,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "جديد",
                   style: TextStyle(
                       color: kTextColor,
+                      // fontFamily: 'Cairo-Black',
                       fontWeight: FontWeight.bold,
                       fontSize: 18.2),
                 ),

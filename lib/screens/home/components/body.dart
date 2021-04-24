@@ -408,7 +408,10 @@ class _BodyState extends State<Body> {
                       Padding(padding: EdgeInsets.only(left: 10.0)),
                       Text('Star ',
                           style: TextStyle(
-                              fontSize: 26.0, fontWeight: FontWeight.w900)),
+                              fontSize: 26.0,
+                              fontFamily: 'Cairo-Bold',
+
+                              fontWeight: FontWeight.w900)),
                       Text(
                         "N",
                         style: TextStyle(
@@ -443,7 +446,9 @@ class _BodyState extends State<Body> {
                                   style: TextStyle(
                                       fontSize: 18.0,
                                       color: Colors.black87,
-                                      fontWeight: FontWeight.w600)),
+                                      fontFamily: 'Cairo-Black',
+                                      fontWeight: FontWeight.w600
+                                  )),
                               onTap: () {
                                 // Navigator.pushNamed(context, MyAccountsPage.id);
                                 Navigator.push(
@@ -459,6 +464,8 @@ class _BodyState extends State<Body> {
                               title: new Text('LNB عدسات ستارنت',
                                   style: TextStyle(
                                       fontSize: 18.0,
+                                      fontFamily: 'Cairo-Black',
+
                                       color: Colors.black87,
                                       fontWeight: FontWeight.w600)),
                               onTap: () {
@@ -475,6 +482,8 @@ class _BodyState extends State<Body> {
                               title: new Text('StarNet أسلاك',
                                   style: TextStyle(
                                       fontSize: 18.0,
+                                      fontFamily: 'Cairo-Black',
+
                                       color: Colors.black87,
                                       fontWeight: FontWeight.w600)),
                               onTap: () {
@@ -492,6 +501,8 @@ class _BodyState extends State<Body> {
                                   style: TextStyle(
                                       fontSize: 18.0,
                                       color: Colors.black87,
+                                      fontFamily: 'Cairo-Black',
+
                                       fontWeight: FontWeight.w600)),
                               onTap: () {
                                 Navigator.push(
@@ -506,6 +517,8 @@ class _BodyState extends State<Body> {
                                   new Icon(Icons.tv, color: Color(0xFF3D82AE)),
                               title: new Text('StarNet سيرفرات',
                                   style: TextStyle(
+                                      fontFamily: 'Cairo-Black',
+
                                       fontSize: 18.0,
                                       color: Colors.black87,
                                       fontWeight: FontWeight.w600)),
@@ -523,6 +536,8 @@ class _BodyState extends State<Body> {
                               title: new Text('رسيفر صن + 4 ميجا',
                                   style: TextStyle(
                                       fontSize: 18.0,
+                                      fontFamily: 'Cairo-Black',
+
                                       color: Colors.black87,
                                       fontWeight: FontWeight.w600)),
                               onTap: () {
@@ -540,6 +555,8 @@ class _BodyState extends State<Body> {
                                   style: TextStyle(
                                       fontSize: 18.0,
                                       color: Colors.black87,
+                                      fontFamily: 'Cairo-Black',
+
                                       fontWeight: FontWeight.w600)),
                               onTap: () {
                                 Navigator.push(
@@ -555,6 +572,8 @@ class _BodyState extends State<Body> {
                               title: new Text('StarNet متنوعات',
                                   style: TextStyle(
                                       fontSize: 18.0,
+                                      fontFamily: 'Cairo-Black',
+
                                       color: Colors.black87,
                                       fontWeight: FontWeight.w600)),
                               onTap: () {
@@ -572,6 +591,8 @@ class _BodyState extends State<Body> {
                                   style: TextStyle(
                                       fontSize: 18.0,
                                       color: Colors.black87,
+                                      fontFamily: 'Cairo-Black',
+
                                       fontWeight: FontWeight.w600)),
                               onTap: () {
                                 Navigator.push(
@@ -588,6 +609,8 @@ class _BodyState extends State<Body> {
                                   style: TextStyle(
                                       fontSize: 18.0,
                                       color: Colors.black87,
+                                      fontFamily: 'Cairo-Black',
+
                                       fontWeight: FontWeight.w600)),
                               onTap: () async {
                                 _fasebook(

@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+2
+version: 1.0.0+3
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -84,6 +84,20 @@ flutter:
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
+  fonts:
+    #    - family: Cairo
+    #      fonts:
+    #        - asset: fonts/Cairo-Black.ttf
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
+      - family: Cairo-Black
+        fonts:
+         - asset: asset/fonts/Cairo-Bold.ttf
+         - asset: asset/fonts/Cairo-Black.ttf
+         - asset: asset/fonts/Cairo-ExtraLight.ttf
+         - asset: asset/fonts/Cairo-Light.ttf
+         - asset: asset/fonts/Cairo-Regular.ttf
+         - asset: asset/fonts/Cairo-SemiBold.ttf
   # example:
   # fonts:
   #   - family: Schyler
