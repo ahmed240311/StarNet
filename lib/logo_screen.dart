@@ -55,7 +55,7 @@ class LogoScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 20.0
+            padding: EdgeInsets.only(top: 40.0
                 // top: ScreenUtil.instance.setWidth(160.0)
                 ),
             child: SpinKitThreeBounce(color: Colors.orange[400]),

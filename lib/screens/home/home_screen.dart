@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                       color: kTextColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0),
+                      fontSize: 18.2),
                 ),
               ),
               Tab(
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                       color: kTextColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0),
+                      fontSize: 18.2),
                 ),
               ),
               Tab(
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                       color: kTextColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0),
+                      fontSize: 18.2),
                 ),
               ),
               Tab(
@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                       color: kTextColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0),
+                      fontSize: 18.2),
                 ),
               ),
             ],
