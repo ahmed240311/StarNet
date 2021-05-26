@@ -21,35 +21,32 @@ class Body extends StatelessWidget {
         child: Stack(
          children: <Widget>[
             */
-        ProductTitleWithImage(product: product),
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(24),
-              ),
+        SingleChildScrollView(child: ProductTitleWithImage(product: product)),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 5.0),
+          width: double.infinity,
+          height:size.height/2.1 ,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(22),
             ),
-            child: SingleChildScrollView(
-                child: ColorAndSize(product: product)),
-            // Description(product: product),
-            // AddToCart(product: product)
           ),
+          child: ColorAndSize(product: product),
+          // Description(product: product),
+          // AddToCart(product: product)
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin),
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
           child: Center(
             child: SizedBox(
-              height: size.height * 0.05,
-              width: size.width * 0.65,
-
-              // width: 100,
+              // height: size.height * 0.05,
+              width: size.width * 0.55,
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18)),
-                color: Color(int.parse(product.color)),
+                    borderRadius: BorderRadius.circular(15)),
+                // color: Color(int.parse(product.color)),
+                color: Colors.white,
                 onPressed: () async {
                   await canLaunch(whatsappUrl)
                       ? launch(whatsappUrl)
@@ -60,9 +57,11 @@ class Body extends StatelessWidget {
                 child: Text(
                   "تواصل",
                   style: TextStyle(
-                    fontSize: 22,
+                    fontFamily: 'Cairo-Black',
+
+                    fontSize: 23,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black45,
                   ),
                 ),
               ),

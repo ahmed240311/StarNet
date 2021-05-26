@@ -18,43 +18,33 @@ class Server extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     if (product.id == S2030) {
-      return Container(
-        // color: Colors.black26,
-        width: 300.0,
-        height: 300.0,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Html(
-                      data: product.data,
-                    )),
-              ),
-            ],
-          ),
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Align(
+                alignment: Alignment.center,
+                child: Html(
+                  defaultTextStyle: TextStyle(fontFamily: 'Cairo-Black'),
+                  data: product.data,
+                ),
+              )),
         ),
       );
     } else if (product.id == S9000) {
-      return Container(
-        // color: Colors.black26,
-        width: 300.0,
-        height: 300.0,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Html(
-                      data: product.data,
-                    )),
-              ),
-            ],
-          ),
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Align(
+                alignment: Alignment.center,
+                child: Html(
+                  defaultTextStyle: TextStyle(fontFamily: 'Cairo-Black'),
+                  data: product.data,
+                ),
+              )),
         ),
       );
     }

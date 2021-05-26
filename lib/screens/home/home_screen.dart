@@ -1,10 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:starnet/constants.dart';
 import 'package:starnet/models/Product.dart';
+import 'package:starnet/models/style.dart';
 import 'package:starnet/screens/home/components/body.dart';
-import 'dart:async';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -19,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int _lastIntegerSelected;
 
   _HomeScreenState({this.product});
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     colors: <Color>[
                   Colors.white12,
                   Colors.blueGrey[200],
-
                 ])),
           ),
           // backgroundColor: Colors.white,
@@ -59,11 +55,17 @@ class _HomeScreenState extends State<HomeScreen> {
           //
           //   ),
           // ),
-          // title: Text(
-          //   'بحث',
-          //   style: TextStyle(color: kTextColor),
-          // ),
-
+          title: Text(
+            "ستار نت",
+            style: TextStyle(
+                letterSpacing: 1.0,
+                // color: Col,
+                foreground: Paint()..shader = linearGradient,
+                fontFamily: 'Cairo-Black',
+                fontWeight: FontWeight.bold,
+                fontSize: 27),
+          ),
+          centerTitle: true,
           // actions: <Widget>[
           //   IconButton(
           //     icon: SvgPicture.asset(
@@ -79,21 +81,22 @@ class _HomeScreenState extends State<HomeScreen> {
             tabs: <Widget>[
               Tab(
                 child: Text(
-                  "جديد",
+                  "رسيفر",
                   style: TextStyle(
                       color: kTextColor,
-                      // fontFamily: 'Cairo-Black',
+                      fontFamily: 'Cairo-Black',
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.2),
+                      fontSize: 15.2),
                 ),
               ),
               Tab(
                 child: Text(
-                  "رسيفر",
+                  "متنوعات",
                   style: TextStyle(
                       color: kTextColor,
+                      fontFamily: 'Cairo-Black',
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.2),
+                      fontSize: 15),
                 ),
               ),
               Tab(
@@ -101,17 +104,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   "ريموت",
                   style: TextStyle(
                       color: kTextColor,
+                      fontFamily: 'Cairo-Black',
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.2),
+                      fontSize: 15.2),
                 ),
               ),
               Tab(
                 child: Text(
-                  "فديو",
+                  "سيرفرات",
                   style: TextStyle(
                       color: kTextColor,
+                      fontFamily: 'Cairo-Black',
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.2),
+                      fontSize: 15),
                 ),
               ),
             ],
@@ -124,7 +129,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
 
 // Future<List<Product>> produts() async {
 //   // Query the table for all The Dogs.

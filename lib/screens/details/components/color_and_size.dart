@@ -20,65 +20,49 @@ class ColorAndSize extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     print("my id is ******** " + product.id);
-    // print("my data is : "+ pro)
     if (product.id == S2070) {
-      return Container(
-        // color: Colors.black26,
-        width: 300.0,
-        height: 300.0,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Html(
-                      data: product.data,
-                    )),
-              ),
-            ],
-          ),
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Align(
+                alignment: Alignment.center,
+                child: Html(
+                  defaultTextStyle: TextStyle(fontFamily: 'Cairo-Black'),
+                  data: product.data,
+                ),
+              )),
         ),
       );
     } else if (product.id == S2050) {
-      return Container(
-        // color: Colors.black26,
-        width: 300.0,
-        height: 300.0,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Html(
-                      data: product.data,
-                    )),
-              ),
-            ],
-          ),
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Align(
+                alignment: Alignment.center,
+                child: Html(
+                  defaultTextStyle: TextStyle(fontFamily: 'Cairo-Black'),
+                  data: product.data,
+                ),
+              )),
         ),
       );
     } else if (product.id == Hummer) {
-      return Container(
-        // color: Colors.black26,
-        width: 300.0,
-        height: 300.0,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Html(
-                      data: product.data,
-                    )),
-              ),
-            ],
-          ),
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Align(
+                alignment: Alignment.center,
+                child: Html(
+                  defaultTextStyle: TextStyle(fontFamily: 'Cairo-Black'),
+                  data: product.data,
+                ),
+              )),
         ),
       );
     } else {

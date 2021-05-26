@@ -1,43 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:starnet/models/Product.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:starnet/models/Product.dart';
+
 import '../../../constants.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Ser extends StatefulWidget {
-  @override
-  _SerState createState() => _SerState();
-}
-
-
-class _SerState extends State<Ser> {
+class Ser extends StatelessWidget {
   List<Product> _products;
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-        appBar: AppBar(
-          flexibleSpace: Container(
-
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[
-                    Colors.white12,
-                    Colors.blueGrey[200],
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                )),
-          ),
-          title: Text(
-            "StarNet سيرفرات",
-            style: TextStyle(
-                color: kTextColor, fontSize: 22, fontWeight: FontWeight.w800),
-          ),
-          centerTitle: true,
-        ),
       body: Column(
         children: [
           Expanded(
@@ -79,7 +52,7 @@ class _SerState extends State<Ser> {
                         itemBuilder: (context, index) {
                           Firebase.initializeApp();
                           return GestureDetector(
-                            onTap: (){}
+                            onTap: () {}
                             // async {
                             //   await canLaunch(whatsappUrl)
                             //       ? launch(whatsappUrl)
@@ -97,7 +70,7 @@ class _SerState extends State<Ser> {
                                     width: MediaQuery.of(context).size.width,
                                     height: MediaQuery.of(context).size.height,
                                     padding:
-                                    EdgeInsets.all(kDefaultPaddin / 7.5),
+                                        EdgeInsets.all(kDefaultPaddin / 7.5),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       image: DecorationImage(
@@ -109,10 +82,10 @@ class _SerState extends State<Ser> {
                                       child: Hero(
                                           tag: "${products[index].id}",
                                           child: SizedBox.expand(
-                                            // child: FittedBox(
-                                            //   fit: BoxFit.fill,
-                                            // ),
-                                          )),
+                                              // child: FittedBox(
+                                              //   fit: BoxFit.fill,
+                                              // ),
+                                              )),
                                     ),
                                   ),
                                 ),
@@ -154,15 +127,14 @@ class _SerState extends State<Ser> {
       ),
     );
   }
+
   List<Product> getProductCategory(String KAllNovaServer) {
     List<Product> products = [];
     for (var product in _products) {
-      if (product.color == KAllNovaServer ) {
+      if (product.color == KAllNovaServer) {
         products.add(product);
       }
     }
     return products;
-
   }
 }
-

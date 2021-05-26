@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:starnet/constants.dart';
 import 'package:starnet/models/Product.dart';
+import 'package:starnet/models/style.dart';
 import 'package:starnet/screens/details/components/Lnb.dart';
 import 'package:starnet/screens/details/components/Selk.dart';
 import 'package:starnet/screens/details/components/Stand.dart';
@@ -23,33 +24,142 @@ class Body extends StatefulWidget {
   _BodyState createState() => _BodyState();
 }
 
+// bool _isLeading = true;
+
 class _BodyState extends State<Body> {
   List<Product> _products = [];
   List<Product> _tap1products = [];
   List<Product> _tap3products = [];
 
+  // @override
+  // void initState() {
+  //   getProducts().listen((_) => _isLeading = false);
+  //
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return TabBarView(
+    return
+        // _isLeading
+        //   ? Center(child: CircularProgressIndicator())
+        //   :
+        TabBarView(
       children: [
         Stack(
           children: [
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(
+            //       horizontal: kDefaultPaddin, vertical: kDefaultPaddin),
+            //   child: StreamBuilder<QuerySnapshot>(
+            //     stream: getProducts(),
+            //     builder: (context, snapshot) {
+            //       if (snapshot.connectionState == ConnectionState.waiting) {
+            //         return Center(child: CircularProgressIndicator());
+            //       }
+            //       if (snapshot.hasData) {
+            //         List<Product> products = [];
+            //
+            //         for (var doc in snapshot.data.docs) {
+            //           var data = doc.data();
+            //           products.add(Product(
+            //               color: data[KColor],
+            //               title: data[KTitle],
+            //               id: data[KId],
+            //               image: data[KImage],
+            //               data: data[KData]));
+            //           // Product product = Product.fromMap(snapshot.docs.data());
+            //           // print(products);
+            //           // noitifer.productList = _productList;
+            //         }
+            //         _products = [...products];
+            //         products.clear();
+            //         _tap1products = getProductCategory(KProduct);
+            //         // _tap3products = getProductCategory(KAllRemote);
+            //         return GridView.builder(
+            //             physics: ClampingScrollPhysics(),
+            //             itemCount: 2,
+            //             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //               crossAxisCount: 1,
+            //               mainAxisSpacing: kDefaultPaddin,
+            //               crossAxisSpacing: kDefaultPaddin,
+            //               childAspectRatio: 0.85,
+            //             ),
+            //             itemBuilder: (context, index) {
+            //               Firebase.initializeApp();
+            //               return GestureDetector(
+            //                 onTap: () => Navigator.push(
+            //                     context,
+            //                     MaterialPageRoute(
+            //                       builder: (context) => DetailsScreen(
+            //                         product: _tap1products[index],
+            //                       ),
+            //                     )),
+            //                 child: Column(
+            //                   crossAxisAlignment: CrossAxisAlignment.start,
+            //                   children: <Widget>[
+            //                     Expanded(
+            //                       child: Container(
+            //                         width: MediaQuery.of(context).size.width,
+            //                         height: MediaQuery.of(context).size.height,
+            //                         padding:
+            //                             EdgeInsets.all(kDefaultPaddin / 7.5),
+            //                         decoration: BoxDecoration(
+            //                           borderRadius: BorderRadius.circular(10),
+            //                           image: DecorationImage(
+            //                               image: NetworkImage(
+            //                                   "${_tap1products[index].image}"),
+            //                               fit: BoxFit.fill),
+            //                         ),
+            //                         child: SizedBox.expand(
+            //                           child: Hero(
+            //                               tag: "${_tap1products[index].id}",
+            //                               child: SizedBox.expand(
+            //                                   // child: FittedBox(
+            //                                   //   fit: BoxFit.fill,
+            //                                   // ),
+            //                                   )),
+            //                         ),
+            //                       ),
+            //                     ),
+            //                     Padding(
+            //                       padding: const EdgeInsets.symmetric(
+            //                           vertical: kDefaultPaddin / 4),
+            //                       child: Text(
+            //                         '${_tap1products[index].title}',
+            //                         style: TextStyle(
+            //                             fontWeight: FontWeight.bold,
+            //                             color: kTextColor.withOpacity(.8)),
+            //                       ),
+            //                     ),
+            //                     Padding(
+            //                       padding: const EdgeInsets.symmetric(
+            //                           vertical: kDefaultPaddin / 5),
+            //                     ),
+            //                   ],
+            //                 ),
+            //               );
+            //             });
+            //       } else {
+            //         return Center(child: CircularProgressIndicator());
+            //       }
+            //     },
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(
                   horizontal: kDefaultPaddin, vertical: kDefaultPaddin),
               child: StreamBuilder<QuerySnapshot>(
                 stream: getProducts(),
                 builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
                   if (snapshot.hasData) {
                     List<Product> products = [];
 
                     for (var doc in snapshot.data.docs) {
                       var data = doc.data();
+
                       products.add(Product(
                           color: data[KColor],
                           title: data[KTitle],
@@ -62,16 +172,18 @@ class _BodyState extends State<Body> {
                     }
                     _products = [...products];
                     products.clear();
-                    _tap1products = getProductCategory(KProduct);
+                    products = getProductCategory(KProduct);
                     // _tap3products = getProductCategory(KAllRemote);
+                    // _tap1products.isNotEmpty?
                     return GridView.builder(
                         physics: ClampingScrollPhysics(),
-                        itemCount: 2,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 1,
+                        itemCount: 5,
+                        gridDelegate:
+                        SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
                           mainAxisSpacing: kDefaultPaddin,
                           crossAxisSpacing: kDefaultPaddin,
-                          childAspectRatio: 0.85,
+                          childAspectRatio: 0.65,
                         ),
                         itemBuilder: (context, index) {
                           Firebase.initializeApp();
@@ -80,33 +192,34 @@ class _BodyState extends State<Body> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => DetailsScreen(
-                                    product: _tap1products[index],
+                                    product: products[index],
                                   ),
                                 )),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              // crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Expanded(
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height,
+                                    height:
+                                    MediaQuery.of(context).size.height,
                                     padding:
-                                        EdgeInsets.all(kDefaultPaddin / 7.5),
+                                    EdgeInsets.all(kDefaultPaddin / 7.5),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       image: DecorationImage(
                                           image: NetworkImage(
-                                              "${_tap1products[index].image}"),
+                                              "${products[index].image}"),
                                           fit: BoxFit.fill),
                                     ),
                                     child: SizedBox.expand(
                                       child: Hero(
-                                          tag: "${_tap1products[index].id}",
+                                          tag: "${products[index].id}",
                                           child: SizedBox.expand(
-                                              // child: FittedBox(
-                                              //   fit: BoxFit.fill,
-                                              // ),
-                                              )),
+                                            // child: FittedBox(
+                                            //   fit: BoxFit.fill,
+                                            // ),
+                                          )),
                                     ),
                                   ),
                                 ),
@@ -114,7 +227,7 @@ class _BodyState extends State<Body> {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: kDefaultPaddin / 4),
                                   child: Text(
-                                    '${_tap1products[index].title}',
+                                    '${products[index].title}',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: kTextColor.withOpacity(.8)),
@@ -129,7 +242,7 @@ class _BodyState extends State<Body> {
                           );
                         });
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return Center(child: Text('Loading...'));
                   }
                 },
               ),
@@ -151,227 +264,180 @@ class _BodyState extends State<Body> {
             // ),
           ],
         ),
-        Column(
+        Stack(
           children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: kDefaultPaddin, vertical: kDefaultPaddin),
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: getProducts(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      List<Product> products = [];
-
-                      for (var doc in snapshot.data.docs) {
-                        var data = doc.data();
-
-                        products.add(Product(
-                            color: data[KColor],
-                            title: data[KTitle],
-                            id: data[KId],
-                            image: data[KImage],
-                            data: data[KData]));
-                        // Product product = Product.fromMap(snapshot.docs.data());
-                        // print(products);
-                        // noitifer.productList = _productList;
-                      }
-                      _products = [...products];
-                      products.clear();
-                      products = getProductCategory(KProduct);
-                      // _tap3products = getProductCategory(KAllRemote);
-                      // _tap1products.isNotEmpty?
-                      return GridView.builder(
-                          physics: ClampingScrollPhysics(),
-                          itemCount: 5,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: kDefaultPaddin,
-                            crossAxisSpacing: kDefaultPaddin,
-                            childAspectRatio: 0.65,
-                          ),
-                          itemBuilder: (context, index) {
-                            Firebase.initializeApp();
-                            return GestureDetector(
-                              onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DetailsScreen(
-                                      product: products[index],
-                                    ),
-                                  )),
-                              child: Column(
-                                // crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height,
-                                      padding:
-                                          EdgeInsets.all(kDefaultPaddin / 7.5),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                "${products[index].image}"),
-                                            fit: BoxFit.fill),
-                                      ),
-                                      child: SizedBox.expand(
-                                        child: Hero(
-                                            tag: "${products[index].id}",
-                                            child: SizedBox.expand(
-                                                // child: FittedBox(
-                                                //   fit: BoxFit.fill,
-                                                // ),
-                                                )),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: kDefaultPaddin / 4),
-                                    child: Text(
-                                      '${products[index].title}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: kTextColor.withOpacity(.8)),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: kDefaultPaddin / 5),
-                                  ),
-                                ],
-                              ),
-                            );
-                          });
-                    } else {
-                      return Center(child: Text('Loading...'));
-                    }
-                  },
+            Padding(
+              padding: const EdgeInsets.all(
+                5.0,
+              ),
+              child: DiFFerent(),
+            ),
+            Positioned(
+              top: size.height * .72,
+              right: size.height * 0.03,
+              child: FloatingActionButton(
+                onPressed: () {
+                  displayBottomSheet(context);
+                },
+                child: Icon(
+                  Icons.menu,
+                  size: 30.0,
                 ),
               ),
             ),
           ],
         ),
-        Column(
+
+        Stack(
           children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: kDefaultPaddin, vertical: kDefaultPaddin),
-                child:
-                    // _tap3products.isNotEmpty ?
-                    StreamBuilder<QuerySnapshot>(
-                  stream: getProducts(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      List<Product> products = [];
+            Column(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: kDefaultPaddin, vertical: kDefaultPaddin),
+                    child:
+                        // _tap3products.isNotEmpty ?
+                        StreamBuilder<QuerySnapshot>(
+                      stream: getProducts(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          List<Product> products = [];
 
-                      for (var doc in snapshot.data.docs) {
-                        var data = doc.data();
+                          for (var doc in snapshot.data.docs) {
+                            var data = doc.data();
 
-                        products.add(Product(
-                            color: data[KColor],
-                            title: data[KTitle],
-                            id: data[KId],
-                            image: data[KImage],
-                            data: data[KData]));
-                        // Product product = Product.fromMap(snapshot.docs.data());
-                        // print(products);
-                        // noitifer.productList = _productList;
-                      }
-                      _products = [...products];
-                      products.clear();
-                      // products = getProductCategory(KProduct);
-                      _tap3products = getProductCategory(KAllRemote);
-                      // _tap1products.isNotEmpty?
-                      return GridView.builder(
-                          physics: ClampingScrollPhysics(),
-                          itemCount: 23,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: kDefaultPaddin,
-                            crossAxisSpacing: kDefaultPaddin,
-                            childAspectRatio: 0.70,
-                          ),
-                          itemBuilder: (context, index) {
-                            Firebase.initializeApp();
-                            return GestureDetector(
-                              onTap: () async {
-                                await canLaunch(whatsappUrl)
-                                    ? launch(whatsappUrl)
-                                    : Scaffold.of(context)
-                                        .showSnackBar(new SnackBar(
-                                        content: new Text('يرجي تنصيب واتساب'),
-                                      ));
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height,
-                                      padding:
-                                          EdgeInsets.all(kDefaultPaddin / 7.5),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                "${_tap3products[index].image}"),
-                                            fit: BoxFit.fill),
-                                      ),
-                                      child: SizedBox.expand(
-                                        child: Hero(
-                                            tag: "${_tap3products[index].id}",
-                                            child: SizedBox.expand(
-                                                // child: FittedBox(
-                                                //   fit: BoxFit.fill,
-                                                // ),
-                                                )),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: kDefaultPaddin / 4),
-                                    child: Text(
-                                      '${_tap3products[index].title}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: kTextColor.withOpacity(.8)),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: kDefaultPaddin / 5),
-                                  ),
-                                ],
+                            products.add(Product(
+                                color: data[KColor],
+                                title: data[KTitle],
+                                id: data[KId],
+                                image: data[KImage],
+                                data: data[KData]));
+                            // Product product = Product.fromMap(snapshot.docs.data());
+                            // print(products);
+                            // noitifer.productList = _productList;
+                          }
+                          _products = [...products];
+                          products.clear();
+                          // products = getProductCategory(KProduct);
+                          _tap3products = getProductCategory(KAllRemote);
+                          // _tap1products.isNotEmpty?
+                          return GridView.builder(
+                              physics: ClampingScrollPhysics(),
+                              itemCount: 23,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: kDefaultPaddin,
+                                crossAxisSpacing: kDefaultPaddin,
+                                childAspectRatio: 0.70,
                               ),
-                            );
-                          });
-                    } else {
-                      return Center(
-                        child: Text('Loading...'),
-                      );
-                    }
-                  },
+                              itemBuilder: (context, index) {
+                                Firebase.initializeApp();
+                                return GestureDetector(
+                                  onTap: () async {
+                                    await canLaunch(whatsappUrl)
+                                        ? launch(whatsappUrl)
+                                        : Scaffold.of(context)
+                                            .showSnackBar(new SnackBar(
+                                            content: new Text('يرجي تنصيب واتساب'),
+                                          ));
+                                  },
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Container(
+                                          width: MediaQuery.of(context).size.width,
+                                          height:
+                                              MediaQuery.of(context).size.height,
+                                          padding:
+                                              EdgeInsets.all(kDefaultPaddin / 7.5),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                            image: DecorationImage(
+                                                image: NetworkImage(
+                                                    "${_tap3products[index].image}"),
+                                                fit: BoxFit.fill),
+                                          ),
+                                          child: SizedBox.expand(
+                                            child: Hero(
+                                                tag: "${_tap3products[index].id}",
+                                                child: SizedBox.expand(
+                                                    // child: FittedBox(
+                                                    //   fit: BoxFit.fill,
+                                                    // ),
+                                                    )),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: kDefaultPaddin / 4),
+                                        child: Text(
+                                          '${_tap3products[index].title}',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: kTextColor.withOpacity(.8)),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: kDefaultPaddin / 5),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              });
+                        } else {
+                          return Center(
+                            child: Text('Loading...'),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
+                // ),
+              ],
+            ),
+            Positioned(
+              top: size.height * .72,
+              right: size.height * 0.03,
+              child: FloatingActionButton(
+                onPressed: () {
+                  displayBottomSheet(context);
+                },
+                child: Icon(
+                  Icons.menu,
+                  size: 30.0,
                 ),
               ),
             ),
-            // ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(
-            15.0,
-          ),
-          child: Video(),
+        Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(
+                5.0,
+              ),
+              child: Ser(),
+            ),
+            Positioned(
+              top: size.height * .72,
+              right: size.height * 0.03,
+              child: FloatingActionButton(
+                onPressed: () {
+                  displayBottomSheet(context);
+                },
+                child: Icon(
+                  Icons.menu,
+                  size: 30.0,
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
@@ -410,7 +476,6 @@ class _BodyState extends State<Body> {
                           style: TextStyle(
                               fontSize: 26.0,
                               fontFamily: 'Cairo-Bold',
-
                               fontWeight: FontWeight.w900)),
                       Text(
                         "N",
@@ -442,32 +507,20 @@ class _BodyState extends State<Body> {
                                 Icons.location_on,
                                 color: Color(0xFF3D82AE),
                               ),
-                              title: new Text('منفذ البيع',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.black87,
-                                      fontFamily: 'Cairo-Black',
-                                      fontWeight: FontWeight.w600
-                                  )),
+                              title: Style('منفذ البيع', styleCat),
                               onTap: () {
-                                // Navigator.pushNamed(context, MyAccountsPage.id);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            Location()));
+                                Navigator.pushNamed(context, Location.routeMeal);
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (BuildContext context) =>
+                                //             Location()));
                               },
                             ),
                             new ListTile(
                               leading: new Icon(Icons.remove_red_eye,
                                   color: Color(0xFF3D82AE)),
-                              title: new Text('LNB عدسات ستارنت',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontFamily: 'Cairo-Black',
-
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.w600)),
+                              title: Style('LNB عدسات ستارنت', styleCat),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -479,13 +532,7 @@ class _BodyState extends State<Body> {
                             new ListTile(
                               leading: new Icon(Icons.add_road,
                                   color: Color(0xFF3D82AE)),
-                              title: new Text('StarNet أسلاك',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontFamily: 'Cairo-Black',
-
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.w600)),
+                              title: Style('StarNet أسلاك', styleCat),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -497,13 +544,7 @@ class _BodyState extends State<Body> {
                             new ListTile(
                               leading: new Icon(Icons.aspect_ratio,
                                   color: Color(0xFF3D82AE)),
-                              title: new Text('ستاندات مستوردة',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.black87,
-                                      fontFamily: 'Cairo-Black',
-
-                                      fontWeight: FontWeight.w600)),
+                              title: Style('ستاندات مستوردة', styleCat),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -512,34 +553,22 @@ class _BodyState extends State<Body> {
                                             StanD()));
                               },
                             ),
-                            new ListTile(
-                              leading:
-                                  new Icon(Icons.tv, color: Color(0xFF3D82AE)),
-                              title: new Text('StarNet سيرفرات',
-                                  style: TextStyle(
-                                      fontFamily: 'Cairo-Black',
-
-                                      fontSize: 18.0,
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.w600)),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            Ser()));
-                              },
-                            ),
+                            // new ListTile(
+                            //   leading:
+                            //       new Icon(Icons.tv, color: Color(0xFF3D82AE)),
+                            //   title: Style('StarNet سيرفرات', styleCat),
+                            //   onTap: () {
+                            //     Navigator.push(
+                            //         context,
+                            //         MaterialPageRoute(
+                            //             builder: (BuildContext context) =>
+                            //                 Ser()));
+                            //   },
+                            // ),
                             new ListTile(
                               leading: new Icon(Icons.cast_connected,
                                   color: Color(0xFF3D82AE)),
-                              title: new Text('رسيفر صن + 4 ميجا',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontFamily: 'Cairo-Black',
-
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.w600)),
+                              title: Style('رسيفر صن + 4 ميجا', styleCat),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -551,13 +580,7 @@ class _BodyState extends State<Body> {
                             new ListTile(
                               leading: new Icon(Icons.cast_connected,
                                   color: Color(0xFF3D82AE)),
-                              title: new Text('رسيفر فري(كبير-مني)',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.black87,
-                                      fontFamily: 'Cairo-Black',
-
-                                      fontWeight: FontWeight.w600)),
+                              title: Style('رسيفر فري(كبير-مني)', styleCat),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -566,34 +589,22 @@ class _BodyState extends State<Body> {
                                             FRee()));
                               },
                             ),
-                            new ListTile(
-                              leading: new Icon(Icons.select_all,
-                                  color: Color(0xFF3D82AE)),
-                              title: new Text('StarNet متنوعات',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontFamily: 'Cairo-Black',
-
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.w600)),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            DiFFerent()));
-                              },
-                            ),
+                            // new ListTile(
+                            //   leading: new Icon(Icons.select_all,
+                            //       color: Color(0xFF3D82AE)),
+                            //   title: Style('StarNet متنوعات', styleCat),
+                            //   onTap: () {
+                            //     Navigator.push(
+                            //         context,
+                            //         MaterialPageRoute(
+                            //             builder: (BuildContext context) =>
+                            //                 DiFFerent()));
+                            //   },
+                            // ),
                             new ListTile(
                               leading: new Icon(Icons.settings_remote_outlined,
                                   color: Color(0xFF3D82AE)),
-                              title: new Text('حجارة ريموت وقلم',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.black87,
-                                      fontFamily: 'Cairo-Black',
-
-                                      fontWeight: FontWeight.w600)),
+                              title: Style('حجارة ريموت وقلم', styleCat),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -605,13 +616,7 @@ class _BodyState extends State<Body> {
                             new ListTile(
                               leading: new Icon(Icons.help,
                                   color: Color(0xFF3D82AE)),
-                              title: new Text('قناة الدعم الفني',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.black87,
-                                      fontFamily: 'Cairo-Black',
-
-                                      fontWeight: FontWeight.w600)),
+                              title: Style('قناة الدعم الفني', styleCat),
                               onTap: () async {
                                 _fasebook(
                                     "https://www.youtube.com/channel/UCJr1MFcGzB3d9z0p937ixeg/featured");
@@ -659,3 +664,8 @@ Future<void> _fasebook(String url) async {
     }
   }
 }
+//
+// void setPermissions()async{
+//   Map<PermissionGroup,PermissionStatus> permissions=
+//       await PermissionHandler().requestPermissions([PermissionGroup.location]);
+// }

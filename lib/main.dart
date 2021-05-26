@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 import 'logo_screen.dart';
+import 'screens/details/components/location.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
       ),
-      home: LogoScreen(),
+      routes: {
+        '/': (context) => LogoScreen(),
+
+        Location.routeMeal: (context) => Location(),
+
+      },
+      // home: LogoScreen(),
       // home: HomeScreen(),
       // home: SELk(),
       // home: Body(),

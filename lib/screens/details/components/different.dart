@@ -6,38 +6,13 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../../../constants.dart';
 
-class DiFFerent extends StatefulWidget {
-  @override
-  _DiFFerentState createState() => _DiFFerentState();
-}
-
-class _DiFFerentState extends State<DiFFerent> {
+class DiFFerent extends StatelessWidget {
   List<Product> _products;
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: AppBar(
-          flexibleSpace: Container(
-
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[
-                    Colors.white12,
-                    Colors.blueGrey[200],
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                )),
-          ),
-          title: Text(
-            "StarNet متنوعات",
-            style: TextStyle(
-                color: kTextColor, fontSize: 22, fontWeight: FontWeight.w800),
-          ),
-          centerTitle: true,
-        ),
       body: Column(
         children: [
           Expanded(
